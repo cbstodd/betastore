@@ -1,0 +1,17 @@
+
+
+<p>
+  <h1>Customer:</h1> 
+  <tr><%= @customer.name %></tr> | 
+  <tr><%= @customer.email %></tr> |
+  <tr><%= @customer.zip_code %></tr> |
+  <tr><%= @customer.state %></tr> |
+  <tr><%= @customer.created_at %></tr> |
+  <tr><%= @customer.updated_at %></tr>
+</p>
+
+
+<%= link_to "Edit customer", edit_admin_customer_path %> |
+<%= link_to "Delete customer", 
+              admin_customer_path(@customer), method: :delete, data: { confirm: "Are you sure you want to delete?"}  %> |
+<%= link_to "Back to customer list", admin_customers_path %> 

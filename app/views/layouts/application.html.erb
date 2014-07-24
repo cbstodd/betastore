@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Betastore</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div style="margin: 0 auto; text-align: center">
+    <%= image_tag("logo.jpg", width: 600) %>
+
+    <% if flash[:notice].present? %>
+      <div class="notice"><%= flash[:notice] %></div>
+    <% end %>
+    <%= yield %>
+  </div>
+</body>
+</html>

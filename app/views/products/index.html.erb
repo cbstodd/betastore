@@ -1,0 +1,7 @@
+<h1>This is a list of all the products</h1>
+<ul>
+  <% @products.each do |product| %>
+  <li><%= link_to product.name, product_path(product) %></li>
+  <li><%= number_to_currency product.price %></li>
+  <% end %>
+</ul>

@@ -1,0 +1,25 @@
+<h1>Products</h1>
+
+<p><%= link_to "Add product", new_admin_product_path %></p>
+<center>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Created At</th>
+  </tr>
+  <% for product in @products %>
+    <tr>
+      <td><%= link_to product.id, admin_product_path(product) %></td>
+      <td><%= product.name %></td>
+      <td><%= product.price %></td>
+      <td><%= product.created_at.strftime("%b %e, %l:%M %p") %></td>
+    </tr>
+  <% end %>
+
+
+</table>
+</center>
+
+<p><%= link_to "Add product", new_admin_product_path %></p>
