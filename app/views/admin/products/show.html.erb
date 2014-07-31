@@ -1,10 +1,12 @@
 
-
-<p><h1>Product:</h1> 
+<div class="jumbotron">
+<h1>Product:</h1> 
 <h2><%= @product.name %> | <%= number_to_currency @product.price %></h2></p>
-<p><%= image_tag @product.image_url, alt: @product.image_url %></p>
+<p><%= image_tag @product.image_url, alt: @product.image_url, class: "img-rounded" %></p>
 
-<%= link_to "Edit Product", edit_admin_product_path %> |
+<%= link_to "Edit Product", edit_admin_product_path, class: "btn btn-primary btn-sm", role: "button" %> |
 <%= link_to "Delete product", 
-              admin_product_path(@product), method: :delete, data: { confirm: "Are you sure you want to delete?"}  %> |
-<%= link_to "Back to product list", admin_product_path %> 
+              admin_product_path(@product), method: :delete, data: { confirm: "Are you sure you want to delete?"}, class: "btn btn-primary btn-sm", role: "button"  %> |
+<%= link_to "Back to product list", admin_product_path, class: "btn btn-primary btn-sm", role: "button" %> 
+
+</div>

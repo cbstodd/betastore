@@ -13,6 +13,7 @@ class Admin::ProductsController < ApplicationController
   end
 
   def create
+    # Finds the product
     @product = Product.new(params.require(:product).permit!)
     if @product.save 
       redirect_to admin_products_path, notice: "Product #{@product.name} was created!"

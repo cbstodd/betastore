@@ -1,7 +1,7 @@
 <h1>Customers</h1>
 
 
-<center>
+
 <table>
   <tr>
     <th>ID</th>
@@ -15,7 +15,7 @@
   <% for customer in @customers %>
     <tr>
       <td><%= link_to customer.id, admin_customer_path(customer) %></td>
-      <td><%= customer.name %></td>
+      <td><%= link_to customer.name, admin_customer_path(customer) %></td>
       <td><%= customer.email %></td>
       <td><%= customer.zip_code %></td>
       <td><%= customer.state %></td>
@@ -27,5 +27,5 @@
   <%= link_to "Add new customer", new_admin_customer_path %>
 
 </table>
-</center>
+
 

@@ -16,6 +16,15 @@ class Admin::CustomersController < ApplicationController
     @customer = Customer.new    
   end
 
+  def create
+    @customer = Customer.new(params.require(:customer).permit!)
+    if @customer.save 
+      redirect_to admin_customers_path, notice: "Customer #{@customer.name} was created!"
+    else
+      render 'new'
+    end    
+  end
+
   def update
       @customer = Customer.find(params[:id])
     if @customer.update(params.require(:customer).permit!) 

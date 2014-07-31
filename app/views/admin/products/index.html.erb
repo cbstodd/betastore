@@ -1,8 +1,8 @@
 <h1>Products</h1>
 
-<p><%= link_to "Add product", new_admin_product_path %></p>
-<center>
-<table>
+<p><%= link_to "Add product", new_admin_product_path, class: "btn btn-danger" %></p>
+
+<table class="table table-striped table-bordered">
   <tr>
     <th>ID</th>
     <th>Name</th>
@@ -12,7 +12,7 @@
   <% for product in @products %>
     <tr>
       <td><%= link_to product.id, admin_product_path(product) %></td>
-      <td><%= product.name %></td>
+      <td><%= link_to product.name, admin_product_path(product) %></td>
       <td><%= product.price %></td>
       <td><%= product.created_at.strftime("%b %e, %l:%M %p") %></td>
     </tr>
@@ -20,6 +20,6 @@
 
 
 </table>
-</center>
+
 
 <p><%= link_to "Add product", new_admin_product_path %></p>
