@@ -1,7 +1,8 @@
 class Admin::CustomersController < ApplicationController
 
   def index
-    @customers = Customer.order('id').all  
+    @customers = Customer.order('id').all
+      # @customers = Customer.paginate(page: params[:page])  
   end
 
   def show
@@ -21,7 +22,7 @@ class Admin::CustomersController < ApplicationController
     if @customer.save 
       redirect_to admin_customers_path, notice: "Customer #{@customer.name} was created!"
     else
-      render 'new'
+      render 'new', alert: "Something wrong with the image url"
     end    
   end
 
@@ -30,7 +31,7 @@ class Admin::CustomersController < ApplicationController
     if @customer.update(params.require(:customer).permit!) 
       redirect_to admin_customers_path, notice: "Customer #{@customer.name} was updated Successfully!"
     else
-      render 'edit'
+      render 'edit', alert: "Something wrong with the image url"
     end
   end
 
