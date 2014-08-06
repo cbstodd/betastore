@@ -4,7 +4,6 @@ class AdminCustomerTest < ActionDispatch::IntegrationTest
 
   def test_add_customer
     visit "/admin/customers"
-
     click_on "Add new customer", match: :first
     fill_in "Name", with: "Example User"
     fill_in "Email", with: "user@example.com"

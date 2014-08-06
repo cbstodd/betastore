@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
+  name: Hat
   price: 9.99
+  description: Great top hat
 
 two:
-  name: MyString
-  price: 9.99
+  name: Coat
+  price: 55.99
+  description: Very warm coat

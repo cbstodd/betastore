@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
-  resources :subscriptions
 
-  get "/products",     to: "products#index"
+  root to: "products#index"
+  resources :subscriptions
+  
+  get "/products",     to: "products#index", as: "products"
   get "/products/:id", to: "products#show", as: "product"
 
+  get "/cart", to: "carts#show", as: "cart"
 
   # Allows for the admin to see products page.
   namespace :admin do 
@@ -11,6 +14,6 @@ Rails.application.routes.draw do
     resources :customers
   end
 
-  root to: "subscriptions#new"
+
 
 end

@@ -1,6 +1,7 @@
 me = Customer.create(name: 'Paul Barry', email: 'mail@paulbarry.com')
 test = Customer.create(name: 'John Doe', email: 'test@example.com')
 Customer.create(name: 'Nowhere Man', email: 'man@nowhere.com')
+Customer.create(name: 'CbStodd', email: 'cbstodd@me.com')
 
 muffin = Product.create(name: 'Muffin', price: 2.99)
 smoothie = Product.create(name: 'Smoothie', price: 3.75)
