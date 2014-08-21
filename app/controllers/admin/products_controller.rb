@@ -1,8 +1,14 @@
 class Admin::ProductsController < ApplicationController
 
+  before_action :require_login
+
   def index
-    @products = Product.order('name').all
+    if logged_in?
+    @products = Product.order('name').to_a
       # @products = Product.paginate(page: params[:page])
+    else
+      redirect_to admin_logins_path, alert: "Please log in."
+    end
   end
 
   def show
@@ -15,7 +21,7 @@ class Admin::ProductsController < ApplicationController
 
   def create
     # Finds the product
-    @product = Product.new(params.require(:product).permit!)
+    @product = Product.new(products_param)
     if @product.save 
       redirect_to admin_products_path, notice: "Product #{@product.name} was created!"
     else
@@ -29,7 +35,7 @@ class Admin::ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
-    if @product.update(params.require(:product).permit!) 
+    if @product.update(products_param) 
       redirect_to admin_products_path, notice: "Product #{@product.name} was updated Successfully!"
     else
       render 'edit'
@@ -41,5 +47,23 @@ class Admin::ProductsController < ApplicationController
     @product.destroy
     redirect_to admin_products_path, notice: "Product #{@product.name} has been deleted!"
   end
+
+  
+  private
+
+    def logged_in?
+      session[:user_id].present?
+    end
+
+    def require_login
+      unless logged_in?
+        redirect_to admin_logins_path, danger: "Please log in to continue."
+      end      
+    end
+
+    def products_param
+      params.require(:product).permit(:name, :price, :image_url, :description)      
+    end
+
 
 end

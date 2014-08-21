@@ -18,7 +18,7 @@ class Admin::CustomersController < ApplicationController
   end
 
   def create
-    @customer = Customer.new(params.require(:customer).permit!)
+    @customer = Customer.new(params.require(:customer).permit(:email, :password))
     if @customer.save 
       redirect_to admin_customers_path, notice: "Customer #{@customer.name} was created!"
     else
@@ -40,6 +40,12 @@ class Admin::CustomersController < ApplicationController
     @customer.destroy
     redirect_to admin_customers_path, notice: "Customer #{@customer.name} has been deleted!"
   end
+
+    private 
+
+    def customer_params
+      params.require(:product).permit(:name, :email, :zip_code, :state)
+    end
 
 
 end

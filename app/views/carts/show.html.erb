@@ -1,3 +1,40 @@
-<h1>I'm a Cart</h1>
+<h1>Shopping cart</h1>
 
-<p>There are <%= pluralize(@item_count, "product") %> in your cart</p>
+<table class="table table-striped">
+  <tr>
+    <th>Product</th>
+    <th>Quantity</th>
+    <th>Base Price</th>
+    <th>Total Price</th>
+  </tr>
+
+  <%= form_for @order, url: order_path, html: { method: 'put' } do |f| %>
+    <%= f.fields_for :line_items do |li| %>
+    <% line_item = li.object %>
+    <%= li.hidden_field :product_id %>
+  <tr>
+    <td><%= line_item.product.name %></td>
+    <td><%= li.number_field :quantity %></td>
+    <td><%= number_to_currency line_item.product.price %></td>
+    <td><%= number_to_currency line_item.total_price %></td>
+    <% end %>
+  
+  </tr>
+
+</table>
+<table class="table bg-warning">
+  <tr>
+    <th>Cart Total:</th>
+  </tr>
+  <tr>  
+    <td><%= number_to_currency @order.total_price %></td>
+  </tr>
+</table>
+    <%= f.submit "Update Cart", class: "btn btn-default" %>
+  <% end %>
+  <%= link_to "Continue Shopping", root_path, class: "btn btn-default" %>
+
+  <%= link_to "Checkout", new_order_path, class: "btn btn-warning" %> 
+ 
+</div>
+

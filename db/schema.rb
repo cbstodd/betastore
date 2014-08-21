@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140804232425) do
+ActiveRecord::Schema.define(version: 20140819000150) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "credit_cards", force: true do |t|
+    t.integer  "customer_id"
+    t.string   "number"
+    t.string   "expiration_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "credit_cards", ["customer_id"], name: "index_credit_cards_on_customer_id", using: :btree
 
   create_table "customers", force: true do |t|
     t.string   "name"
@@ -43,6 +53,8 @@ ActiveRecord::Schema.define(version: 20140804232425) do
     t.decimal  "total_amount"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "credit_card_id"
+    t.integer  "shipping_address_id"
   end
 
   add_index "orders", ["customer_id"], name: "index_orders_on_customer_id", using: :btree
@@ -56,8 +68,26 @@ ActiveRecord::Schema.define(version: 20140804232425) do
     t.string   "description"
   end
 
+  create_table "shipping_addresses", force: true do |t|
+    t.integer  "customer_id"
+    t.string   "street"
+    t.string   "zip_code"
+    t.string   "city"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "shipping_addresses", ["customer_id"], name: "index_shipping_addresses_on_customer_id", using: :btree
+
   create_table "subscriptions", force: true do |t|
     t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "email"
+    t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

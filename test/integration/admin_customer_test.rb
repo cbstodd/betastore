@@ -18,8 +18,7 @@ class AdminCustomerTest < ActionDispatch::IntegrationTest
     fill_in "Zip code", with: "12345"
     fill_in "State", with: "FL"
     click_on "Update Customer"
-    assert page.has_content?("Customer Example User2 was updated Successfully!")
-  
+    assert page.has_content?("Customer Example User2 was updated Successfully!")  
     click_on "User2"
     click_on "Delete customer"
     visit "/admin/customers"

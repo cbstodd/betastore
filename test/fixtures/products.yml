@@ -2,7 +2,7 @@
 
 one:
   name: Hat
-  price: 9.99
+  price: 1234.56
   description: Great top hat
 
 two:

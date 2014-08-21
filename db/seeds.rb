@@ -1,4 +1,5 @@
-me = Customer.create(name: 'Paul Barry', email: 'mail@paulbarry.com')
+User.create!(email: 'cbstodd@gmail.com', password: 'Damntone8')
+
 test = Customer.create(name: 'John Doe', email: 'test@example.com')
 Customer.create(name: 'Nowhere Man', email: 'man@nowhere.com')
 Customer.create(name: 'CbStodd', email: 'cbstodd@me.com')

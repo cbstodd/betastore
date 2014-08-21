@@ -5,6 +5,7 @@ class AdminProductTest < ActionDispatch::IntegrationTest
   def test_add_product
     visit "/admin/products"
     click_on "Add product", match: :first
+    
     fill_in "Name", with: "Item"
     fill_in "Price", with: "9.99"
     fill_in "Image url", with: "www.image.com"
