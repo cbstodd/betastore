@@ -82,6 +82,6 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.action_mailer.default_url_options = {
-  host: 
+  host: "http://glacial-dusk-9309.herokuapp.com/"
 }
 end
