@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+ruby "2.1.2"
 
 gem 'puma'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -40,6 +41,8 @@ group :test do
   gem 'capybara'
   gem 'launchy'
 end
+
+gem 'rails_12factor'
 
 
 # Use ActiveModel has_secure_password
