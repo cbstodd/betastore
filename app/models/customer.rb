@@ -14,7 +14,9 @@ class Customer < ActiveRecord::Base
 
   
   def downcase_email
-    self.email = email.to_s.downcase    
+    if email
+      self.email = email.to_s.downcase
+    end
   end
 
   def upcase_state
